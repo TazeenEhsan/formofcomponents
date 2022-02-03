@@ -3,7 +3,8 @@ import React from 'react';
 const Voucher = ({ handleOnBlur }) => {
     return (
         <div>
-            <input type="text" name="voucher" onBlur={handleOnBlur} placeholder='Voucher code' id="" required />
+            <p style={{ textAlign: 'start' }}>Voucher or event code</p>
+            <input type="text" style={{ width: '100%', padding: '7px' }} name="voucher" onBlur={handleOnBlur} placeholder='Enter code' id="" required />
         </div>
     );
 };

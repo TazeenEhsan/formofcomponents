@@ -16,24 +16,13 @@ const Header = () => {
 
             <div className="row gx-0">
                 <div className="col-lg-4 col-sm-12 ">
-                    <Link className="nav-con-link" to="/home"> <h4>ST Travel Blog</h4></Link>
+                    <Link className="nav-con-link" to='/'> <h4>Form</h4></Link>
 
 
 
 
                 </div>
                 <div className="col-lg-8 col-sm-12">
-
-                    <Link className="nav-con-link" to="/home">Home</Link>
-                    {admin && <Link className="nav-con-link" to="/adminpannel">Admin Pannel</Link>}
-
-                    <Link className="nav-con-link" to="/contact">Contact Us</Link>
-
-                    {
-                        user?.displayName ? <Link style={{ textDecoration: 'none' }} to='/home'><button onClick={logOut} style={{ border: '1px solid red', color: 'red', backgroundColor: 'black' }}>Log Out</button></Link> :
-                            <Link className="nav-con-link" to="/login">Login</Link>
-                    }
-
 
 
 

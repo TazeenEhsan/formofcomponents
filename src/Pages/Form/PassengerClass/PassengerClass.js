@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
-import { Button, Dropdown, DropdownButton, FormControl, InputGroup, Modal, SplitButton } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
 
-const PassengerClass = ({ handleOnBlur }) => {
+const PassengerClass = ({ handlepassengers }) => {
 
     const [value, setValue] = useState(1)
     const [value2, setValue2] = useState('Ecomony');
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const handleFormSubmit = (e) => {
-        handleShow();
-        e.preventDefault();
-    }
+    const [mainValue, setMainValue] = useState();
 
 
     const handleSelect = (e) => {
         console.log(e);
         setValue2(e);
+        const values = value + " Passengers, " + e;
+        setMainValue(values);
+        handlePassengesHere();
 
+    }
+    const handlePassengesHere = () => {
+        handlepassengers(mainValue);
     }
     const handleClickPos = () => {
         setValue(value + 1)
@@ -30,57 +28,39 @@ const PassengerClass = ({ handleOnBlur }) => {
         }
     }
     return (
-        // <div>
-        //     <p>Passengers class</p>
-        //     <input type="PassengerClas" onBlur={handleOnBlur} name="" id="" required />
-        // </div>
-        // <InputGroup className="mb-3">
-        //     <FormControl aria-label="Text input with dropdown button" value={value + " Passengers, " + value2} />
-        //     <DropdownButton
-        //         style={{ padding: '-2px', backgroundColor: 'red' }}
-        //         onSelect={handleSelect}
-        //     >
-        //         <Dropdown.Item eventKey="Economy" href="#">Economy</Dropdown.Item>
-        //         <Dropdown.Item eventKey="Premium" href="#">Premium</Dropdown.Item>
-        //         <Dropdown.Item eventKey="Upper Class" href="#">Upper Class</Dropdown.Item>
-        //         <Dropdown.Divider />
-        //         <Dropdown.Item href="#">Separated link</Dropdown.Item>
-        //         <Dropdown.Divider />
 
-        //         <Button onClick={handleClickPos}>Add</Button>
-        //         <Button onClick={handleClickNeg}>Remove</Button>
-        //     </DropdownButton>
+        <>
+            <p style={{ textAlign: 'start' }}>Passengers/travel class</p>
+            <InputGroup className="mb-3">
+                <FormControl aria-label="Text input with dropdown button" value={value + " Passengers, " + value2} />
+                <DropdownButton
+                    title=""
+                    required='true'
+                >
+                    <p>Travel Class</p>
+                    <DropdownButton
 
-        // </InputGroup>
+                        onSelect={handleSelect}
+                        title=""
+                        active='true'
+                    >
+                        <Dropdown.Item eventKey="Economy" href="#">Economy</Dropdown.Item>
+                        <Dropdown.Item eventKey="Premium" href="#">Premium</Dropdown.Item>
+                        <Dropdown.Item eventKey="Upper Class" href="#">Upper Class</Dropdown.Item>
+
+                    </DropdownButton>
+                    <Dropdown.Divider />
+                    <p>PASSENGERS</p>
+                    <p>Adult</p> <Button style={{ padding: '2px', backgroundColor: 'green' }} onClick={handleClickPos}>+</Button> <Button style={{ padding: '3px', backgroundColor: 'red' }} onClick={handleClickNeg}>-</Button>
+                    <p>Young Adult</p><Button style={{ padding: '2px', backgroundColor: 'green' }} onClick={handleClickPos}>+</Button> <Button style={{ padding: '3px', backgroundColor: 'red' }} onClick={handleClickNeg}>-</Button>
+                    <p>Child</p><Button style={{ padding: '2px', backgroundColor: 'green' }} onClick={handleClickPos}>+</Button> <Button style={{ padding: '3px', backgroundColor: 'red' }} onClick={handleClickNeg}>-</Button>
+                    <p>Infrant</p><Button style={{ padding: '2px', backgroundColor: 'green' }} onClick={handleClickPos}>+</Button> <Button style={{ padding: '3px', backgroundColor: 'red' }} onClick={handleClickNeg}>-</Button>
 
 
+                </DropdownButton>
 
-        <InputGroup className="mb-3">
-            <FormControl aria-label="Text input with dropdown button" value={value + " Passengers, " + value2} />
-            <DropdownButton
-                style={{ padding: '-2px', backgroundColor: 'red' }}
-                onClick={handleFormSubmit}
-            >
-                <Dropdown.Item href="#"> ff
-                    <Modal show={show} onHide={handleClose} size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered animation={false}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Form Data by the USer</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Footer>
-                            <button variant="secondary" onClick={handleClose}>
-                                Close
-                            </button>
-
-                        </Modal.Footer>
-                    </Modal>
-                </Dropdown.Item>
-
-            </DropdownButton>
-
-        </InputGroup>
+            </InputGroup>
+        </>
     );
 };
 
